@@ -1,0 +1,50 @@
+Blockchain<
+	Block<
+		height:0
+		timestamp:0
+		prevHash:0
+		currHash:0
+		data:genesis
+		nonce:0
+		difficulty:4
+		student_id:0
+		student_name:None
+		class_id:COMP0000
+		class_name:None
+		grade:0
+		absences:0
+		credits:0
+	>
+	Block<
+		height:1
+		timestamp:1618424635
+		prevHash:0
+		currHash:000052c18844ea3ca5bd4240fe249f1af4cacf71e67d3d2c6ba382be895261d7
+		data:lol
+		nonce:57208
+		difficulty:1
+		student_id:smithe4
+		student_name:ethan smith
+		class_id:COMP3800
+		class_name:bc
+		grade:95
+		absences:3
+		credits:4
+	>
+	Block<
+		height:2
+		timestamp:1618424635
+		prevHash:000052c18844ea3ca5bd4240fe249f1af4cacf71e67d3d2c6ba382be895261d7
+		currHash:0637af2514bdd02614dab327df15044cb57dcde541e80a48138680b920ec32dd
+		data:test
+		nonce:3
+		difficulty:1
+		student_id:eth
+		student_name:jeff g
+		class_id:COMP2222
+		class_name:computer
+		grade:66
+		absences:1
+		credits:4
+	>
+>
