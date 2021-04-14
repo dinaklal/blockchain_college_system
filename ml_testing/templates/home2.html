@@ -1,0 +1,166 @@
+{% extends 'base.html'%}
+
+{% block Content %}
+
+{% load static %}
+
+
+
+{% if user.is_authenticated %}
+
+
+<style>
+.w-25 { width: 33% !important;
+height:600px !important;}
+</style>
+
+
+
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:rgba(13, 39, 122, 0.6)">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+            </h1> <li><a href="/" style="color:white;"><h4>Project - Comment Toxicity Detection </h4    ></a></li></ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/" style="color:white;"><b>DINAK LAL V ( 2002012 )</b></a></li>
+
+        <li><a href="logout" style="color:white;">Logout</a></li>
+
+
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
+
+
+
+
+{% csrf_token %}
+           <div class ="row">
+
+            </div>
+    </div> <!--- row ends -->
+    <hr>
+
+    <div class ="row">
+      <div class="col-sm-2">
+<table class='table  table-hover ' border="1" style='background-color:rgba(103, 121, 201, 0.7)  ;padding-top:10px';>
+
+
+<tr >
+  <td>
+    <button class="btn btn-lg btn-primary  btn-block"  onclick="window.location.href='home'"> Project Overview</button>
+  </td></tr>
+  <tr>
+  <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='implementation'"> Implementation</button>
+  </td>
+</tr>
+<tr>
+  <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='final'"> Results</button>
+  </td>
+</tr>
+  <tr>
+     <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='inaction'"> Product In Action </button>
+  </td>
+</tr>
+
+
+    </tr>
+
+
+
+</table>
+
+
+              </div>
+      <div class="col-sm-9">
+
+          <table class='table  table-hover ' border="1" style='background-color:white;padding-top:10px';>
+    <tr>
+        <td>
+
+            <h3> Project </h3>
+            <p><h4><br>
+                Most of the online systems are now encouraging the online comments from its portals.
+                These involve product reviews , comments in social networks, direct messages etc..
+                But this is the internet and not all users are interested in participating in these activities in a positive manner. Some are considering this as an opportunity to show their rage ,rage, insecurity, and prejudices.<br>
+<br>
+                In recent years there have been many cases in which authorities have arrested some users of social sites because of negative (abusive) content of their personal pages.Hence, there is a great need to classify these posts and comments before they are published.</p>
+
+        Same with the other portals like social media , online market sites and other online publicly commentable online portals.
+Main data set used here is,<br><br>
+<a href ='https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/data'> <li>https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/data</li></a><br>
+This one is part of a Kaggle competition which handles the similar business case as the competition theme. The models will be again validated via actual comments given in a Food distributing network’s online comments part. This data is entirely public and fetched manually via its portal.
+Final aim is to build an online website that will accept the comment as input and give the toxicity percent of the comment and its reasons. This will work like an API service too.
+
+        </h4>
+        </td>
+    </tr>
+          </table>
+
+
+      </div>
+
+
+      <script src="{% static 'js/jquery.min.js'  %}"></script>
+
+      <script src="{% static 'js/in_script.js' %}"></script>
+      <link href="{% static 'css/1.css' %}" rel="stylesheet">
+
+   
+          <br>
+          <br>
+
+          
+      </div>
+
+
+    </div>
+    <br>
+    <br>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+    {% else %}
+
+    <body onLoad="w()">
+      {% endif %}
+
+      {% endblock %}

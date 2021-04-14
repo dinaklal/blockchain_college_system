@@ -1,0 +1,242 @@
+{% extends 'base.html'%}
+
+{% block Content %}
+
+{% load static %}
+
+
+
+{% if user.is_authenticated %}
+
+
+<style>
+.w-25 { width: 33% !important;
+height:600px !important;}
+</style>
+
+
+
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:rgba(13, 39, 122, 0.6)">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/" style="color:white;"><b>Hi,{{ username }}</b></a></li>
+
+        <li><a href="logout" style="color:white;">Logout</a></li>
+
+
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
+
+
+
+
+{% csrf_token %}
+           <div class ="row">
+
+            </div>
+    </div> <!--- row ends -->
+    <hr>
+
+    <div class ="row">
+      <div class="col-md-2">
+<table class='table  table-hover ' border="1" style='background-color:rgba(103, 121, 201, 0.7)  ;padding-top:10px';>
+
+<tr >
+  <td>
+    <button class="btn btn-lg btn-primary  btn-block"  onclick="window.location.href='fetch_corpus'"> Create Corpus</button>
+  </td></tr>
+  <tr>
+  <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='l_models'"> Create L-Models</button>
+  </td>
+</tr>
+<tr>
+  <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='report'"> Create Report</button>
+  </td>
+</tr>
+  <tr>
+     <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='grams?n=2'"> Get Bigrams</button>
+  </td>
+</tr>
+      <tr>
+     <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='grams?n=3'"> Get Trigrams</button>
+  </td>
+</tr>
+
+    </tr>
+      <tr>
+     <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='grams?n=3'"> Get Probabilities</button>
+  </td>
+</tr>
+
+       </tr>
+      <tr>
+     <td>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='custom'"> Custom Words</button>
+  </td>
+</tr>
+
+
+
+</table>
+      </div>
+
+<div class="col-md-9">
+          <table class='table  table-hover ' border="1" style='background-color:rgba(0,228, 251,0.7);padding-top:10px';>
+         <tr>
+            <div class="col-md-4">
+            <td>
+                <h3> Get Next Word </h3>
+        <form action="getp" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+            <span class="label label-primary">Select Bigram:</span>
+        <select class="form-control" class="form-control" id="sel1" name="bigram" required>
+
+       {% for u in bigram  %}
+
+        <option value="{{ u }}">{{ u }}
+           </option  >
+        {% endfor %}
+
+
+          </select>
+            </div>
+            </td>
+            </div>
+
+                  <div class="col-md-4">
+                      <INPUT TYPE="hidden" name="n" value="2">
+            <td class="col-md-4">
+                <br><br><br>
+               <button class="btn btn-lg btn-success  btn-block" type="submit">Get Next Words </button>
+            </td>
+                  </div>
+             </form>
+         </tr>
+ <form action="getp" method="POST">
+     {% csrf_token %}
+               <tr>
+            <div class="col-md-4">
+            <td>
+                <h3> Get Next Word </h3>
+
+            <div class="form-group">
+            <span class="label label-primary">Select Trigram:</span>
+        <select class="form-control" class="form-control" id="sel" name="trigram" required>
+
+       {% for u in trigram  %}
+
+        <option value="{{ u }}">{{ u }}
+           </option  >
+        {% endfor %}
+
+
+          </select>
+            </div>
+            </td>
+            </div>
+
+                  <div class="col-md-4">
+                      <INPUT TYPE="hidden" name="n" value="3">
+            <td class="col-md-4">
+                <br><br><br>
+               <button class="btn btn-lg btn-success  btn-block" type="submit">Get Next Words </button>
+            </td>
+                  </div>
+         </tr>
+ </form>
+
+              <tr>
+
+ <table class='table  table-hover ' border="1" style='background-color:rgba(0,240, 251,0.7);padding-top:10px';>
+     <thead>
+     <th><h3>{{inp}}</h3></th>
+     </thead>
+     <thead>
+         <th>Possible String</th>
+     <th> Count</th>
+     <th> Probability</th>
+
+     </thead>
+     <tbody>
+     {%  for u in out %}
+     <tr>
+        <b></b> <td>{{u.item}}</td>
+         <td>{{u.count}}</td><td>{{u.p}}</td></b>
+     </tr>
+     {% endfor %}
+     </tbody>
+ </table>
+
+              </tr>
+          </table>
+</div>
+
+
+      <script src="{% static 'js/jquery.min.js'  %}"></script>
+
+      <script src="{% static 'js/in_script.js' %}"></script>
+      <link href="{% static 'css/1.css' %}" rel="stylesheet">
+
+   
+          <br>
+          <br>
+
+          
+      </div>
+
+
+    </div>
+    <br>
+    <br>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+    {% else %}
+
+    <body onLoad="w()">
+      {% endif %}
+
+      {% endblock %}
