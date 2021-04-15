@@ -31,7 +31,7 @@ def register(request):
     print(bc.get_block(0))
     bc.add_block(b1)
     print(bc.get_block(1))
-    f = open("/Users/nmary/Documents/saved_chain_state.txt", "w")
+    f = open("/Users/dev/Documents/dinak/mtech/blockchain/project_final/saved_chain_state.txt", "w")
     f.write(str(bc))
     f.close()
     return render(request, 'home2.html')
