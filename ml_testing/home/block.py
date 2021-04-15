@@ -3,7 +3,7 @@ import time
 
 
 class Block:
-    def __init__(self, timestamp, prevHash, data, difficulty, student_id, student_name, class_id, class_name, grade, absences, credits):
+    def __init__(self, timestamp, prevHash, data, difficulty, student_id, first_name, last_name, tuition_fee, mess_fee, hostel_fee, status):
         self.height = 0
         self.timestamp = timestamp
         self.prevHash = prevHash
@@ -12,15 +12,16 @@ class Block:
         self.nonce = 0
         self.difficulty = difficulty
         self.student_id=student_id
-        self.student_name=student_name
-        self.class_id=class_id
-        self.class_name=class_name
-        self.grade=grade
-        self.absences=absences
-        self.credits=credits
+        self.first_name=first_name
+        self.last_name=last_name
+        self.tuition_fee=tuition_fee
+        self.mess_fee=mess_fee
+        self.hostel_fee=hostel_fee
+        self.status=status
+
 
     def __repr__(self):
-        return 'Block<\n\t\theight:{}\n\t\ttimestamp:{}\n\t\tprevHash:{}\n\t\tcurrHash:{}\n\t\tdata:{}\n\t\tnonce:{}\n\t\tdifficulty:{}\n\t\tstudent_id:{}\n\t\tstudent_name:{}\n\t\tclass_id:{}\n\t\tclass_name:{}\n\t\tgrade:{}\n\t\tabsences:{}\n\t\tcredits:{}\n\t>\n'.format(self.height, self.timestamp, self.prevHash, self.currHash, self.data, self.nonce, self.difficulty, self.student_id, self.student_name, self.class_id, self.class_name, self.grade, self.absences, self.credits)
+        return 'Block<\n\t\theight:{}\n\t\ttimestamp:{}\n\t\tprevHash:{}\n\t\tcurrHash:{}\n\t\tdata:{}\n\t\tnonce:{}\n\t\tdifficulty:{}\n\t\tstudent_id:{}\n\t\tfirst_name:{}\n\t\tlast_name:{}\n\t\ttuition_fee:{}\n\t\tmess_fee:{}\n\t\thostel_fee:{}\n\t\tstatus:{}\n\t>\n'.format(self.height, self.timestamp, self.prevHash, self.currHash, self.data, self.nonce, self.difficulty, self.student_id, self.first_name, self.last_name, self.tuition_fee, self.mess_fee, self.hostel_fee, self.status)
 
     @staticmethod
     def genesis():

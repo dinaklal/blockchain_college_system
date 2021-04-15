@@ -33,8 +33,8 @@ def register(request):
     post_data.pop('csrfmiddlewaretoken', None)
     print(post_data['firstname'][0])
     global bc
-    b1 = Block(0, 0, "lol", 1, "smithe4", "ethan smith", "COMP3800", "bc", 95, 3, 4)
-    b2 = Block(0, 0, "test", 1, "eth", "jeff g", "COMP2222", "computer", 66, 1, 4)
+    b1 = Block(0, 0, "lol", 1, "neeuse", "neenu", "mary", "2000", "200", "1000", "Initial")
+    b2 = Block(0, 0, "test", 1, "dinn", "divya", "test", "9000", "400", "1000", "Initial")
 
     print(bc.get_block(0))
     bc.add_block(b1)
