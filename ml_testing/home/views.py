@@ -1,10 +1,5 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
-import wikipedia
-from nltk import ngrams
-
-
-
 
 from home.block import *
 from home.Blockchain import *
@@ -31,17 +26,12 @@ def logout(request):
 def register(request):
     post_data = dict(request.POST.lists())
     post_data.pop('csrfmiddlewaretoken', None)
-    print(post_data['firstname'][0])
     global bc
-    b1 = Block(0, 0, "lol", 1, "neeuse", "neenu", "mary", "2000", "200", "1000", "Initial")
-    b2 = Block(0, 0, "test", 1, "dinn", "divya", "test", "9000", "400", "1000", "Initial")
-
+    b1 = Block(0, 0, "lol", 1, post_data['studentId'][0], post_data['firstname'][0],  post_data['lastname'][0], post_data['tuitionfee'][0], post_data['messfee'][0], post_data['hostelfee'][0], post_data['course'][0], "Initial")
     print(bc.get_block(0))
     bc.add_block(b1)
     print(bc.get_block(1))
-    bc.add_block(b2)
-    print(bc.get_block(2))
-    f = open("/Users/dev/Documents/dinak/mtech/blockchain/project_final/saved_chain_state.txt", "w")
+    f = open("/Users/nmary/Documents/saved_chain_state.txt", "w")
     f.write(str(bc))
     f.close()
     return render(request, 'home2.html')
