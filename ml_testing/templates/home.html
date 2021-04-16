@@ -81,6 +81,7 @@ height:600px !important;}
      <thead>
       <th>Student Id</th>
       <th> Name</th>
+      <th> time</th>
       <th> Tuition Fee</th>
       <th> Mess Fee</th>
       <th> Hostel Fee</th>
@@ -94,6 +95,7 @@ height:600px !important;}
      <tr>
         <b></b> <td>{{i.student_id}} </td>
          <td>{{i.first_name}} &nbsp; {{i.last_name}}</td>
+         <td>{{i.timestamp}} </td>
          <td>{{i.tuitionfee}}</td>
          <td>{{i.messfee}}</td>
          <td>{{i.hostelfee}}</td>
@@ -101,8 +103,8 @@ height:600px !important;}
          <td>{{i.status}}</td>
          <td style="justify-content: space-evenly;display: flex;">
           {% if i.status == 'Initial' %}
-            <button style="color: green;">Approve</button>
-            <button style="color: red;"> Reject</button>
+            <button onclick="location.href='change_status?id={{i.height}}&action=1'" style="color: green;">Approve</button>
+            <button onclick="location.href='change_status?id={{i.height}}&action=0'" style="color: red;"> Reject</button>
           {% endif %}
          </td>
      </tr>
