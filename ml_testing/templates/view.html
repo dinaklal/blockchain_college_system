@@ -102,7 +102,6 @@ height:600px !important;}
       <th> Hostel Fee</th>
       <th> Course</th>
       <th> Status</th>
-      <th style="text-align:center"> Action</th>
 
      </thead>
      <tbody>
@@ -115,12 +114,6 @@ height:600px !important;}
          <td>{{i.hostelfee}}</td>
          <td>{{i.course}}</td>
          <td>{{i.status}}</td>
-         <td style="justify-content: space-evenly;display: flex;">
-          {% if i.status == 'Initial' %}
-            <button style="color: green;">Approve</button>
-            <button style="color: red;"> Reject</button>
-          {% endif %}
-         </td>
      </tr>
      {% endfor %}
      </tbody>

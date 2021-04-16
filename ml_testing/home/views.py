@@ -19,7 +19,24 @@ def home(request):
     if username == 'student_common_login':
       return render(request, 'home2.html')
     else:
-      return render(request, 'home.html')
+          m= ""
+          data = []
+
+          for b in range(bc.get_length()):
+              d = {}
+              block = bc.get_block(b)
+              d['student_id'] =block.student_id
+              d['first_name'] = block.first_name
+              d['last_name'] =block.last_name
+              d['tuitionfee'] =block.tuition_fee
+              d['messfee'] =block.mess_fee
+              d['hostelfee'] =block.hostel_fee
+              d['course'] = block.course
+              d['status'] = block.status
+              if (d['status'] != 0):
+                data.append(d)
+          return  render(request,'home.html',{'data':data})
+      
 def logout(request):
     auth.logout(request)
     return redirect('/')
