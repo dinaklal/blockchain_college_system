@@ -132,3 +132,10 @@ def view(request):
         new_vals.append(max(all, key=lambda x: x['timestamp']))
     return  render(request,'view.html',{'data':new_vals})
 
+def block(request):
+    data =  str(bc)
+
+
+    return  render(request,'block.html',{'data':data})
+
+
