@@ -14,7 +14,24 @@
 height:600px !important;}
 </style>
 
+<script>
+function w() {
+swal({   title: "Block  Chain",   text: "Duplicate Site Name",   type: "warning",
+ showCancelButton: false,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Please use different site name",   closeOnConfirm: false },
+ function(){
+    window.location.href = 'home';});
 
+
+};
+function s() {
+swal({   title: "College Block Chain",   text: "Student  Added, waiting for approval from System",   type: "success",
+ showCancelButton: false,   confirmButtonColor: "#00ff7f",   confirmButton: "View Status",   closeOnConfirm: false },
+ function(){
+    window.location.href = 'home';});
+
+
+};
+</script>
 
 
 
@@ -84,7 +101,7 @@ height:600px !important;}
   </td></tr>
   <tr>
   <td>
-    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='implementation'"> View Status</button>
+    <button class="btn btn-lg btn-primary  btn-block" onclick="window.location.href='view'"> View Status</button>
   </td>
 </tr>
 
@@ -228,8 +245,17 @@ a {
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+{% for message in messages %}
 
+     {% if message.tags == "error" %}
+     <body onload=w1()>
 
+     {% endif %}
+       {% if message.tags == "info" %}
+     <body onload=s()>
+
+     {% endif %}
+{% endfor %}
     {% else %}
 
     <body onLoad="w()">

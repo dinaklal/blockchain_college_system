@@ -3,13 +3,13 @@ from django.contrib.auth.models import User,auth
 
 from home.block import *
 from home.Blockchain import *
-
+from django.contrib import messages
 
 import json
 
 from django.conf import settings
 # Create your views here.
-
+from home.models import Student
 bc = Blockchain()
 
 
@@ -31,9 +31,22 @@ def register(request):
     print(bc.get_block(0))
     bc.add_block(b1)
     print(bc.get_block(1))
-    f = open("/Users/nmary/Documents/saved_chain_state.txt", "w")
+    f = open("/Users/Dev/Documents/saved_chain_state.txt", "w")
     f.write(str(bc))
     f.close()
+    messages.info(request, 'done')
     return render(request, 'home2.html')
 
+def view(request):
+    m= ""
+    data = []
+
+    for b in range(bc.get_length()):
+        d = {}
+        block = bc.get_block(b)
+        d['first'] = block.first_name
+        d['last'] =block.last_name
+        d['status'] = block.status
+        data.append(d)
+    return  render(request,'view.html',{'data':data})
 
