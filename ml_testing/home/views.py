@@ -44,9 +44,15 @@ def view(request):
     for b in range(bc.get_length()):
         d = {}
         block = bc.get_block(b)
-        d['first'] = block.first_name
-        d['last'] =block.last_name
+        d['student_id'] =block.student_id
+        d['first_name'] = block.first_name
+        d['last_name'] =block.last_name
+        d['tuitionfee'] =block.tuition_fee
+        d['messfee'] =block.mess_fee
+        d['hostelfee'] =block.hostel_fee
+        d['course'] = block.course
         d['status'] = block.status
-        data.append(d)
+        if (d['status'] != 0):
+          data.append(d)
     return  render(request,'view.html',{'data':data})
 
