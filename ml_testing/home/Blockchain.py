@@ -6,6 +6,7 @@ class Blockchain:
         self.chain.append(Block.genesis())
 
     def get_block(self, index):
+
         return self.chain[index]
 
     def add_block(self, new_block):

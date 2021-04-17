@@ -38,9 +38,9 @@ height:600px !important;}
      
     </div>
     <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-left"><li><h4><a style="color:white;">Assignement</a></h4> </li></ul>
+        <ul class="nav navbar-nav navbar-left"><li><h4><a style="color:white;">Project - Student Register System </a></h4> </li></ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/" style="color:white;"><b>Hi,{{ username }}</b></a></li>
+        <li><a href="/" style="color:white;"><b>Group 2</b></a></li>
 
         <li><a href="logout" style="color:white;">Logout</a></li>
 
@@ -51,30 +51,13 @@ height:600px !important;}
   </div>
 </div>
 
-
-
-
-
-
-
-<div class="container-fluid">
-  <div class="row">
-
-    <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
-
-
-
-
-{% csrf_token %}
-           <div class ="row">
-
-            </div>
-    </div> <!--- row ends -->
-    <hr>
-
-    <div class ="row">
+<div class ="row"><br></div>
+<div class ="row">
       <div class="col-sm-2">
 <table class='table  table-hover ' border="1" style='background-color:rgba(103, 121, 201, 0.7)  ;padding-top:10px';>
+
+
+
 
 <tr >
   <td>
@@ -92,46 +75,50 @@ height:600px !important;}
   </td>
 </tr>
 
+
+    </tr>
+
+
+
 </table>
+
+
+              </div>
+
+
+
+
+
+
+    <div class="col-sm-9 ">
+
+
+
+
+{% csrf_token %}
+           <div class ="row">
+
+            </div>
+    </div> <!--- row ends -->
+    <hr>
+
+    <div class ="row">
+      <div class="col-sm-1">
+
       </div>
-<div class="col-md-9">
-
-
- <table class='table  table-hover ' border="1" style='background-color:ghostwhite;padding-top:10px';>
-     <thead>
-      <th>Student Id</th>
-      <th> Name</th>
-      <th> Tuition Fee</th>
-      <th> Mess Fee</th>
-      <th> Hostel Fee</th>
-      <th> Course</th>
-      <th> Status</th>
-
-     </thead>
-     <tbody>
-     {%  for i in data %}
-     <tr>
-        <b></b> <td>{{i.student_id}} </td>
-         <td>{{i.first_name}} &nbsp; {{i.last_name}}</td>
-         <td>{{i.tuitionfee}}</td>
-         <td>{{i.messfee}}</td>
-         <td>{{i.hostelfee}}</td>
-         <td>{{i.course}}</td>
-         <td>{{i.status}}</td>
-     </tr>
-     {% endfor %}
-     </tbody>
- </table>
-
-              </tr>
-          </table>
+     <div class="col-md-9">
+         <table class='table  table-hover ' border="1" style='background-color:rgba(200, 240, 250, 0.7)  ;padding-top:10px';>
+            <tr>
+            <td>
+                <pre>
+          {{data}}
+                </pre>
+                </td>
+               </tr>
+         </table>
+     </div>
 
     <br>
-
-
-
-</div>
-    </div>
       <script src="{% static 'js/jquery.min.js'  %}"></script>
 
       <script src="{% static 'js/in_script.js' %}"></script>

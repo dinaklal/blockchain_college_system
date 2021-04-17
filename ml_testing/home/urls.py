@@ -9,6 +9,7 @@ urlpatterns = [
     path('view', views.view, name='view'),
     path('change_status', views.change_status, name='change_status'),
     path('block', views.block, name='block'),
+    path('ledger', views.ledgder, name='ledger'),
 
 
 ]

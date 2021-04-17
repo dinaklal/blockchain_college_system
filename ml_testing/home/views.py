@@ -6,18 +6,17 @@ from home.Blockchain import *
 from django.contrib import messages
 from collections import Counter
 import json
-
+import copy
 from django.conf import settings
 # Create your views here.
 from home.models import Student
 bc = Blockchain()
 
 
-
 def home(request):
     username = request.user.username
 
-    if username == 'student_common_login':
+    if   'student' in username:
       return render(request, 'home2.html')
     else:
           m= ""
@@ -51,7 +50,7 @@ def change_status(request):
         id = request.GET['id']
         action = request.GET['action']
         if action == '1':
-            temp  = bc.get_block(int(id))
+            temp  = copy.deepcopy(bc.get_block(int(id)))
             temp.status = "Approved"
             bc.add_block(temp)
         else:
@@ -94,7 +93,7 @@ def register(request):
     post_data = dict(request.POST.lists())
     post_data.pop('csrfmiddlewaretoken', None)
     global bc
-    b1 = Block(0, 0, "lol", 1, post_data['studentId'][0], post_data['firstname'][0],  post_data['lastname'][0], post_data['tuitionfee'][0], post_data['messfee'][0], post_data['hostelfee'][0], post_data['course'][0], "Initial")
+    b1 = Block(0, 0, "lol", 4, post_data['studentId'][0], post_data['firstname'][0],  post_data['lastname'][0], post_data['tuitionfee'][0], post_data['messfee'][0], post_data['hostelfee'][0], post_data['course'][0], "Initial")
     print(bc.get_block(0))
     bc.add_block(b1)
     print(bc.get_block(1))
@@ -137,5 +136,8 @@ def block(request):
 
 
     return  render(request,'block.html',{'data':data})
+def ledgder(request):
+    data =  str(bc)
+    return  render(request,'ledger.html',{'data':data})
 
 

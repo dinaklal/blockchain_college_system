@@ -27,16 +27,21 @@ class Block:
     def genesis():
         return Block(0, 0, "genesis", 4, 0, "None", "COMP0000", "None", 0, 0, 0, 0)
 
+
     @staticmethod
     def mine(block, last_block):
         difficulty=last_block.difficulty
         block.height=last_block.height+1
         block.prevHash=last_block.currHash
+
+        #PROOF OF WORK
         while True:
             block.nonce=block.nonce+1
             block.timestamp=int(time.time())
             tmp_hash=sha256(str(block).encode()).hexdigest()
+            #IF THE CALCULATION REACHES THE PREDEFINED DIFFICULTY , GET THE CONSENSUS
             if tmp_hash[0:difficulty] == '0'*difficulty:
                 break
+
         block.currHash = tmp_hash
         return block
